@@ -5,8 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open -- --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modinlineules"
+    "dev": "gulp"
   },
   "repository": {
     "type": "git",
@@ -18,7 +17,9 @@
   },
   "license": "ISC",
   "dependencies": {
-    "vue": "^2.1.0"
+    "vue": "^2.1.0",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

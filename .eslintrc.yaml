@@ -1,6 +1,6 @@
 root: true
 parserOptions:
-  sourceType: script
+  sourceType: module
   scmaFeatures:
     impliedStrict: true
 rules:
