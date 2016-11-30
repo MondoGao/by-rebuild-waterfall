@@ -10,7 +10,8 @@ let config = require('./config');
 gulp.task('webpack', function () {
   return gulp.src('./src/main.js')
     .pipe(webpackStream(config.webpack, webpack))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/'))
+    .pipe(server.stream());
 });
 
 gulp.task('watch', function () {
@@ -18,17 +19,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('server', ['webpack', 'watch'], function (cb) {
-  server.init({
-    ui: {
-      port: 80
-    },
-    server: {
-      baseDir: './',
-      directory: true,
-    },
-    open: false,
-    startPath: '/'
-  }, cb);
+  server.init(config.browserSync, cb);
 });
 
 gulp.task('default', ['server']);
