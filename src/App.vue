@@ -1,96 +1,50 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
-        <h2>{{ msg + 'test' }}</h2>
-        <h3 v-if="id">seen</h3>
-        <h1 v-else>Big seen</h1>
         <ul>
-            <li v-for="item in items">
-                {{ item }}
-            </li>
+            <listItem v-for="img in imgData" v-bind:imgData="img"></listItem>
         </ul>
-        <template v-if="!id">
-            <div>tst</div>
-            <p>{{ messageT }}</p>
-        </template>
-        <p v-on:click="change">Computed message: {{ reversedMessage }}</p>
-        <input type="text" v-model="messageT">
-        <br>
-        <hello-o my-message="Hello!" v-model="myMessage">
-        </hello-o>
-        <div>{{ myMessage }}</div>
     </div>
 </template>
 
 <script>
+    import listItem from './components/img-list-item/img-list-item.vue';
     export default {
-      name: 'app',
       data () {
         return {
-          msg: 'Welcome to Vue',
-          id: false,
-          messageT: '',
-          items: [
-            1,2,3,4,5
-          ],
-          myMessage: "test",
+          name: 'Vue',
+          imgData: [
+            {
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/b0/1a/b0/b01ab0d72d6eee99b794ded1b1f7ee9e.jpg',
+              alt: 'testPicture'
+            },{
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/d8/c7/da/d8c7dab885a2a049ee986d523ba8047d.jpg',
+              alt: 'testPicture'
+            },{
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/d8/c7/da/d8c7dab885a2a049ee986d523ba8047d.jpg',
+              alt: 'testPicture'
+            },{
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/d8/c7/da/d8c7dab885a2a049ee986d523ba8047d.jpg',
+              alt: 'testPicture'
+            },{
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/b0/1a/b0/b01ab0d72d6eee99b794ded1b1f7ee9e.jpg',
+              alt: 'testPicture'
+            },{
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/b0/1a/b0/b01ab0d72d6eee99b794ded1b1f7ee9e.jpg',
+              alt: 'testPicture'
+            },{
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/d8/c7/da/d8c7dab885a2a049ee986d523ba8047d.jpg',
+              alt: 'testPicture'
+            }, {
+              src: 'https://s-media-cache-ak0.pinimg.com/236x/b0/1a/b0/b01ab0d72d6eee99b794ded1b1f7ee9e.jpg',
+              alt: 'testPicture'
+            }
+          ]
         };
       },
-      computed: {
-        reversedMessage: function () {
-          return this.msg.split('').reverse().join('');
-        }
-      },
-      methods: {
-        change: function () {
-          this.items.reverse();
-        }
-      },
       components: {
-        'hello-o': {
-          props: {
-            'myMessage': {
-              type: [String, Number],
-              required: false,
-            }
-          },
-          methods: {
-            updateValue: function (value) {
-//              this.$refs.input.value = value;
-              this.$emit('input', value);
-            }
-          },
-          template: '<input v-bind:value="value" v-on:input="updateValue($event.target.value)" ref="input" v-bind:name="value"><span>{{ myMessage }}</span>',
-        }
-      },
+        'listItem': listItem,
+      }
     };
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
+<style lang="sass" src="./App.scss"></style>

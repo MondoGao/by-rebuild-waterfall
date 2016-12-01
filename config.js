@@ -13,7 +13,10 @@ exports.webpack = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          // vue-loader options go here
+          loaders: {
+            // css: 'sass-loader'
+          },
+          postcss: [require('autoprefixer')()]
         }
       },
       {
